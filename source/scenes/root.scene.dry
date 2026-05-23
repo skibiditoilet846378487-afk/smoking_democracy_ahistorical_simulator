@@ -105,9 +105,10 @@ Q.z_relation = 50;
 Q.kpd_relation = 25;
 Q.ddp_relation = 60;
 Q.dvp_relation = 35;
-// DNVP and NSDAP are invariably hostile
-Q.DNVP_relation = 10;
-Q.NSDAP_relation = 0;
+Q.dhg_relation = 25;
+Q.pfr_relation = 25;
+Q.dnvp_relation = 10;
+Q.nsdap_relation = 0;
 
 Q.kpd_leader = "Thälmann";
 // alternative is the Conciliators as party leader
@@ -147,6 +148,9 @@ Q.rfb_strength = 130;
 Q.rfb_militancy = 0.5;
 Q.rfb_banned = 0;
 Q.rfb_banned_prussia = 0;
+// Atomwaffen will never be legal, what did you expect
+Q.atw_strength = 60;
+Q.atw_militancy = 1;
 
 Q.interior_police_strength = 50;
 Q.interior_police_militancy = 1;
@@ -204,6 +208,9 @@ Q.rural = 25; // agriculture and forestry employment... but many of those are pr
 // source: https://surface.syr.edu/cgi/viewcontent.cgi?filename=3&article=1016&context=books&type=additional page 43, table 3.3
 Q.unemployed = 8.6;
 Q.catholics = 30;
+Q.gooners = 19;
+Q.jews = 3; // very loose calculations
+Q.oldies = 7.6; // Based on the Vietnamese demographics, because they look similar
 
 // unemployment: 1929 - 13.3, 1930 - 22.7, 1931 - 34.3, 1932 - 43.8 (same source as above)
 
@@ -227,8 +234,8 @@ Q.unemployed_qol = 100;
 Q.old_middle_qol = 100;
 Q.new_middle_qol = 100;
 
-Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
-Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
+Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics', 'gooners', 'jews', 'oldies'];
+Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'dhg', 'pfr', 'other'];
 
 // TODO: add 'sapd' later on
 Q.sapd_formed = 0;
@@ -242,6 +249,8 @@ Q.workers_ddp = 0;
 Q.workers_dvp = 0;
 Q.workers_dnvp = 5;
 Q.workers_nsdap = 0;
+Q.workers_dhg = 0;
+Q.workers_pfr = 0;
 Q.workers_other = 10;
 
 Q.old_middle_spd = 5;
@@ -251,6 +260,8 @@ Q.old_middle_ddp= 10;
 Q.old_middle_dvp = 25;
 Q.old_middle_dnvp = 25;
 Q.old_middle_nsdap = 10;
+Q.old_middle_dhg = 0;
+Q.old_middle_pfr = 0;
 Q.old_middle_other = 10;
 
 Q.new_middle_spd = 5;
@@ -260,6 +271,8 @@ Q.new_middle_ddp= 25;
 Q.new_middle_dvp = 25;
 Q.new_middle_dnvp = 10;
 Q.new_middle_nsdap = 5;
+Q.new_middle_dhg = 0;
+Q.new_middle_pfr = 0;
 Q.new_middle_other = 15;
 
 Q.rural_spd = 10;
@@ -269,6 +282,8 @@ Q.rural_ddp= 5;
 Q.rural_dvp = 15;
 Q.rural_dnvp = 45;
 Q.rural_nsdap = 5;
+Q.rural_dhg = 0;
+Q.rural_pfr = 0;
 Q.rural_other = 10;
 
 Q.unemployed_spd = 25;
@@ -278,6 +293,8 @@ Q.unemployed_ddp = 0;
 Q.unemployed_dvp = 0;
 Q.unemployed_dnvp = 5;
 Q.unemployed_nsdap = 15;
+Q.unemployed_dhg = 0;
+Q.unemployed_pfr = 0;
 Q.unemployed_other = 9;
 
 Q.catholics_spd = 15;
@@ -287,8 +304,42 @@ Q.catholics_ddp = 0;
 Q.catholics_dvp = 5;
 Q.catholics_dnvp = 5;
 Q.catholics_nsdap = 0;
+Q.catholics_dhg = 0;
+Q.catholics_pfr = 0;
 Q.catholics_other = 12;
 
+Q.gooners_spd = 15;
+Q.gooners_kpd = 2;
+Q.gooners_z = 50;
+Q.gooners_ddp = 0;
+Q.gooners_dvp = 5;
+Q.gooners_dnvp = 5;
+Q.gooners_nsdap = 0;
+Q.gooners_dhg = 0;
+Q.gooners_pfr = 0;
+Q.gooners_other = 12;
+
+Q.jews_spd = 15;
+Q.jews_kpd = 2;
+Q.jews_z = 50;
+Q.jews_ddp = 0;
+Q.jews_dvp = 5;
+Q.jews_dnvp = 5;
+Q.jews_nsdap = 0;
+Q.jews_dhg = 0;
+Q.jews_pfr = 0;
+Q.jews_other = 12;
+
+Q.oldies_spd = 15;
+Q.oldies_kpd = 2;
+Q.oldies_z = 50;
+Q.oldies_ddp = 0;
+Q.oldies_dvp = 5;
+Q.oldies_dnvp = 5;
+Q.oldies_nsdap = 0;
+Q.oldies_dhg = 0;
+Q.oldies_pfr = 0;
+Q.oldies_other = 12;
 
 // Current Reichstag composition
 // % of Reichstag in Jan 1928
@@ -303,6 +354,8 @@ Q.ddp_r = 6;
 Q.dvp_r = 10;
 Q.dnvp_r = 20;
 Q.nsdap_r = 3;
+Q.dhg_r = 0;
+Q.pfr_r = 0;
 Q.other_r = 9;
 
 // diff from prev
@@ -313,6 +366,8 @@ Q.old_ddp_r = 6;
 Q.old_dvp_r = 10;
 Q.old_dnvp_r = 20;
 Q.old_nsdap_r = 3;
+Q.old_dhg_r = 9;
+Q.old_pfr_r = 9;
 Q.old_other_r = 9;
 
 // sapd isn't formed yet, but it may be formed
@@ -342,6 +397,8 @@ Q.dvp_in_government = 1;
 Q.dnvp_in_government = 1;
 Q.kpd_in_government = 0;
 Q.nsdap_in_government = 0;
+Q.dhg_in_government = 0;
+Q.pfr_in_government = 0;
 
 Q.in_right_coalition = 0;
 // Weimar coalition = SPD + Z + DDP
